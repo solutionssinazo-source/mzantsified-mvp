@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mzantsified | What Comes Next</title>
+<meta name="description" content="Mzantsified is the agentic digital layer built to help you get things done, wherever you are." />
+<style>
+  :root{
+    --green:#00311E;
+    --gold:#FFAF02;
+    --cream:#FBF8F2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Public Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background:var(--green);
+    color:var(--cream);
+    line-height:1.5;
+  }
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:24px 6vw;
+    border-bottom:1px solid rgba(255,175,2,0.25);
+  }
+  .brand{
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:0.04em;
+    color:var(--gold);
+  }
+  nav a{
+    color:var(--cream);
+    text-decoration:none;
+    margin-left:28px;
+    font-size:14px;
+    opacity:0.85;
+  }
+  nav a:hover{opacity:1;color:var(--gold);}
+  .hero{
+    padding:12vh 6vw 10vh;
+    max-width:920px;
+  }
+  .eyebrow{
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(32px,6vw,58px);
+    line-height:1.08;
+    font-weight:800;
+    margin-bottom:20px;
+  }
+  h1 span{color:var(--gold);}
+  .lede{
+    font-size:19px;
+    max-width:620px;
+    opacity:0.9;
+    margin-bottom:32px;
+  }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:36px;
+  }
+  .tag{
+    border:1px solid rgba(255,175,2,0.4);
+    color:var(--gold);
+    font-size:13px;
+    font-weight:600;
+    padding:6px 14px;
+    border-radius:999px;
+  }
+  .cta{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--green);
+    font-weight:800;
+    padding:14px 28px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:15px;
+  }
+  .cta:hover{opacity:0.92;}
+  section.split{
+    background:var(--cream);
+    color:var(--green);
+    padding:8vh 6vw;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  @media (max-width:760px){
+    section.split{grid-template-columns:1fr;}
+  }
+  .card{
+    background:#fff;
+    border:1px solid rgba(0,49,30,0.1);
+    border-radius:14px;
+    padding:32px;
+  }
+  .card h3{
+    font-size:22px;
+    margin-bottom:10px;
+  }
+  .card p{
+    font-size:15px;
+    opacity:0.85;
+    margin-bottom:18px;
+  }
+  .card a{
+    color:var(--green);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:2px solid var(--gold);
+    padding-bottom:2px;
+    font-size:14px;
+  }
+  .status{
+    text-align:center;
+    padding:10vh 6vw;
+    font-size:14px;
+    opacity:0.65;
+  }
+  footer{
+    padding:28px 6vw;
+    text-align:center;
+    font-size:12px;
+    opacity:0.6;
+    border-top:1px solid rgba(255,175,2,0.2);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">MZANTSIFIED</div>
+  <nav>
+    <a href="#what">What It Does</a>
+    <a href="#partners">Partners</a>
+    <a href="https://v2blackboxmvp.vercel.app" target="_blank" rel="noopener">BlackBox</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">What comes next is Mzantsified</div>
+  <h1>Your digital life, <span>connected</span> to what comes next.</h1>
+  <div class="tags">
+    <span class="tag">AI</span>
+    <span class="tag">WhatsApp</span>
+    <span class="tag">Services</span>
+    <span class="tag">Opportunities</span>
+  </div>
+  <p class="lede">Mzantsified is the agentic digital layer built to help you get things done, wherever you are — AI-powered services, opportunities and digital assistance, connected through one intelligent layer.</p>
+  <a class="cta" href="#partners">Explore Mzantsified</a>
+</div>
+
+<section class="split" id="what">
+  <div class="card">
+    <h3>Looking for what comes next?</h3>
+    <p>Meet BlackBox. Connect your skills, experience and potential to opportunities, services and the changing world of work.</p>
+    <a href="https://v2blackboxmvp.vercel.app" target="_blank" rel="noopener">Explore BlackBox &rarr;</a>
+  </div>
+  <div class="card" id="partners">
+    <h3>Built under Mayine</h3>
+    <p>Mzantsified is part of the Mayine ecosystem by Solutions Sinazo — one connected layer across the platforms and services being built for South Africa.</p>
+    <a href="https://www.solutionssinazo.co.za" target="_blank" rel="noopener">Solutions Sinazo &rarr;</a>
+  </div>
+</section>
+
+<div class="status">This is an early public-facing preview of Mzantsified. The full platform is in active build.</div>
+
+<footer>
+  Powered By: Solutions Sinazo (Pty) Ltd &middot; K2025/941001/07
+</footer>
+
+</body>
+</html>
+
