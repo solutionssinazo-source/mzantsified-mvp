@@ -1,0 +1,9 @@
+{
+  "name": "mzantsified-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mzantsified — static PWA front-end plus Vercel serverless API backed by Neon Postgres.",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4"
+  }
+}
