@@ -99,7 +99,10 @@ input,select,textarea,button{font-family:inherit}
 <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ false }}">
 <div style="position:relative;min-height:100dvh;display:flex;flex-direction:column;padding:20px 20px 28px;animation:mzRise 520ms cubic-bezier(.16,1,.3,1) both">
   <div style="display:flex;align-items:center;justify-content:space-between">
-    <img src="assets/mzantsified-wordmark.webp" alt="Mzantsified" style="height:26px;width:auto;display:block">
+    <div style="display:flex;align-items:center;gap:6px">
+      <img src="assets/mzantsified-mark.webp" alt="" style="height:39px;width:auto;display:block;filter:drop-shadow(0 0 12px rgba(255,182,18,.5))">
+      <img src="assets/mzantsified-wordmark.webp" alt="Mzantsified" style="height:26px;width:auto;display:block">
+    </div>
     <button type="button" onClick="{{ startOnboarding }}" style="flex:none;padding:9px 16px;border:1px solid rgba(255,182,18,.45);border-radius:999px;background:rgba(255,182,18,.08);color:#FFD27A;font-weight:700;font-size:13px;cursor:pointer;transition:box-shadow 180ms,border-color 180ms" style-hover="box-shadow:0 0 16px rgba(255,182,18,.4);border-color:#FFB612">Try Mzantsified</button>
   </div>
   <div style="flex:1;min-height:24px"></div>
