@@ -3,7 +3,10 @@
  *   <script src="https://mzantsified.co.za/feedback.js" data-product="mzantsified" defer></script>
  * Options (data- attributes on the script tag):
  *   data-product   "mzantsified" | "adintel"            (required)
- *   data-delay     seconds before the pop-up opens       (default 90)
+ *   data-delay     seconds after the visitor's FIRST visit before the pop-up
+ *                  opens (default 86400 = 24 hours). Counted from a stored
+ *                  first-seen timestamp, not from page load, so it still
+ *                  fires a day later even if the tab is closed in between.
  *   data-inline    CSS selector: render the form inside that element instead of the pop-up only
  *   data-button    "off" to hide the floating Feedback button
  *   data-popup     "off" to never open the timed pop-up (e.g. on the feedback page itself)
@@ -14,16 +17,26 @@
   var script = document.currentScript;
   if (!script) return;
   var PRODUCT = script.getAttribute('data-product') === 'adintel' ? 'adintel' : 'mzantsified';
-  var DELAY = Math.max(10, parseInt(script.getAttribute('data-delay') || '90', 10)) * 1000;
+  var DELAY = Math.max(10, parseInt(script.getAttribute('data-delay') || '86400', 10)) * 1000;
   var INLINE = script.getAttribute('data-inline');
   var SHOW_BUTTON = script.getAttribute('data-button') !== 'off';
   var POPUP = script.getAttribute('data-popup') !== 'off';
   var ENDPOINT = new URL('/api/feedback', script.src).href;
   var KEY = 'ss_feedback_' + PRODUCT;
+  var SEEN_KEY = 'ss_feedback_first_seen_' + PRODUCT;
   var NAME = PRODUCT === 'adintel' ? 'Ad//Intel' : 'Mzantsified';
 
   function getDecision() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function setDecision(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function getFirstSeen() {
+    try {
+      var v = localStorage.getItem(SEEN_KEY);
+      if (v) return parseInt(v, 10);
+      var now = Date.now();
+      localStorage.setItem(SEEN_KEY, String(now));
+      return now;
+    } catch (e) { return Date.now(); }
+  }
 
   var css = '' +
     '.ssfb,.ssfb *{box-sizing:border-box;font-family:Manrope,system-ui,-apple-system,sans-serif}' +
@@ -173,7 +186,13 @@
       b.addEventListener('click', openModal);
       document.body.appendChild(b);
     }
-    if (POPUP && !getDecision()) setTimeout(function () { if (!getDecision()) openModal(); }, DELAY);
+    if (POPUP && !getDecision()) {
+      // State-based, not a live countdown: the remaining wait is computed
+      // from a persisted first-seen timestamp, so it still lands ~24h after
+      // first visit even across tab closes, reloads or device sleep.
+      var remaining = DELAY - (Date.now() - getFirstSeen());
+      setTimeout(function () { if (!getDecision()) openModal(); }, remaining > 0 ? remaining : 1500);
+    }
   }
 
   window.SSFeedback = { open: openModal, mountInline: function (sel) {
